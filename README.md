@@ -1,18 +1,5 @@
 # Jarvis Life System Starter
 
-Public install page for the Jarvis Life System Starter.
+Public bilingual install page for Traditional Chinese and Vietnamese starter kits.
 
-- Live page: https://edenchiu806.github.io/jarvis-life-system-starter/
-- Mac package: `downloads/jarvis-life-system-starter-mac.zip`
-- Windows package: `downloads/jarvis-life-system-starter-windows.zip`
-
-The downloadable starter kit contains only public scaffolding:
-
-- beginner onboarding Skill
-- Agent / Skill builder Skill
-- empty memory architecture
-- collaboration and harness docs
-- Mac / Windows getting-started notes
-
-It does not include private vault content, user memory, API keys, customer data,
-or local machine configuration.
+Each language has separate Mac and Windows downloads. The packages are clean starter kits and do not include private user memory or project data.

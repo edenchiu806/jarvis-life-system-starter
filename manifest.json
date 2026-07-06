@@ -1,17 +1,26 @@
 {
-  "name": "Jarvis Life System Starter",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "built_at": "2026-07-06",
   "downloads": {
-    "mac": {
-      "zip": "downloads/jarvis-life-system-starter-mac.zip",
-      "google_drive": "https://drive.google.com/file/d/1BbHEKQ5MZ1HMEM_vFILquzP2J7zvqAu6/view?usp=drivesdk"
+    "zh": {
+      "mac": {
+        "github": "downloads/jarvis-life-system-starter-zh-mac.zip",
+        "google_drive": "https://drive.google.com/file/d/1ml63Mh22Z3RGo3xDPSZTy4bWC5I4L96q/view?usp=drivesdk"
+      },
+      "windows": {
+        "github": "downloads/jarvis-life-system-starter-zh-windows.zip",
+        "google_drive": "https://drive.google.com/file/d/1wwMvetDwyIXiEeIWT89ITHZZG7QArXCP/view?usp=drivesdk"
+      }
     },
-    "windows": {
-      "zip": "downloads/jarvis-life-system-starter-windows.zip",
-      "google_drive": "https://drive.google.com/file/d/1zWUJYbttcC92o754xe00vM8MEQaAYJxI/view?usp=drivesdk"
+    "vi": {
+      "mac": {
+        "github": "downloads/jarvis-life-system-starter-vi-mac.zip",
+        "google_drive": "https://drive.google.com/file/d/1ZrC8Cng7JR2tlvfVpczW05lRtJMi00fy/view?usp=drivesdk"
+      },
+      "windows": {
+        "github": "downloads/jarvis-life-system-starter-vi-windows.zip",
+        "google_drive": "https://drive.google.com/file/d/1Pc9jPzfwEGlthgVC9slyRWgQuhsqM027/view?usp=drivesdk"
+      }
     }
-  },
-  "repo_url": "https://github.com/edenchiu806/jarvis-life-system-starter",
-  "pages_url": "https://edenchiu806.github.io/jarvis-life-system-starter/"
+  }
 }
