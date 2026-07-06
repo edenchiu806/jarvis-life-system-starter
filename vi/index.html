@@ -1,0 +1,174 @@
+<!doctype html>
+<html lang="vi">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Hướng dẫn cài đặt Jarvis Life System Starter</title>
+    <meta name="description" content="Trang hướng dẫn cài đặt Jarvis Life System Starter bằng tiếng Việt, có gói tải cho Mac và Windows." />
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;500;700;900&family=Newsreader:opsz,wght@6..72,600;700&display=swap");
+      :root {
+        --bg:#f4f6ef; --paper:#fffefa; --ink:#17201d; --muted:#58655f; --line:#cbd8d1;
+        --teal:#256f62; --red:#b94f3f; --gold:#c98f2a; --radius:8px;
+        --wrap:min(1160px, calc(100vw - 32px)); --shadow:0 18px 48px rgba(23,32,29,.09);
+      }
+      *{box-sizing:border-box}
+      html{scroll-behavior:smooth}
+      body{margin:0;font-family:"Noto Sans",system-ui,sans-serif;color:var(--ink);background:linear-gradient(90deg,rgba(37,111,98,.08) 1px,transparent 1px),linear-gradient(180deg,rgba(185,79,63,.07),transparent 420px),var(--bg);background-size:72px 72px,auto,auto}
+      a{color:inherit}
+      .wrap{width:var(--wrap);margin:0 auto}
+      .top{position:sticky;top:0;z-index:10;border-bottom:1px solid var(--line);background:rgba(244,246,239,.9);backdrop-filter:blur(14px)}
+      .top-inner{min-height:64px;display:flex;align-items:center;justify-content:space-between;gap:16px}
+      .brand{display:flex;gap:10px;align-items:center;font-weight:900}
+      .mark{width:30px;height:30px;display:grid;place-items:center;border:2px solid var(--ink);border-radius:6px;background:#dceee8}
+      .nav{display:flex;gap:16px;color:var(--muted);font-size:.92rem}
+      .nav a{text-decoration:none}
+      .hero{display:grid;grid-template-columns:minmax(0,1fr) minmax(330px,.78fr);gap:clamp(28px,5vw,72px);padding:clamp(40px,7vw,86px) 0 34px;align-items:start}
+      .eyebrow{font-weight:900;color:var(--teal)}
+      h1,h2,h3{margin:0;letter-spacing:0}
+      h1{font-family:Newsreader,serif;font-size:clamp(2.6rem,7vw,6.2rem);line-height:.92;max-width:10ch;margin-top:14px}
+      h2{font-family:Newsreader,serif;font-size:clamp(2rem,4.5vw,4rem);line-height:.95}
+      .lead{margin:22px 0 0;color:var(--muted);line-height:1.9;font-size:1.08rem;max-width:62ch}
+      .selector{border:1px solid var(--line);background:var(--paper);border-radius:var(--radius);box-shadow:var(--shadow)}
+      .selector-head{padding:18px;border-bottom:1px solid var(--line);display:grid;gap:12px}
+      .language-jump{display:flex;justify-content:space-between;gap:12px;align-items:center;padding:12px;border:1px solid var(--line);border-radius:8px;background:#f6f0df;color:var(--muted)}
+      .language-jump a{font-weight:900;color:var(--ink);text-decoration:none}
+      .seg{display:grid;grid-template-columns:1fr 1fr;gap:4px;padding:4px;border:1px solid var(--line);border-radius:8px;background:#edf2ec}
+      .seg button{border:0;background:transparent;border-radius:6px;padding:10px;font:inherit;font-weight:900;color:var(--muted);cursor:pointer}
+      .seg button[aria-pressed=true]{background:var(--ink);color:var(--paper)}
+      .download-panel{display:none;padding:18px}
+      .download-panel.active{display:block}
+      .download-title{font-size:1.4rem;font-weight:900;margin-bottom:8px}
+      .download-panel p{margin:0 0 16px;color:var(--muted);line-height:1.75}
+      .download-panel .drive-note{margin:12px 0 0;font-size:.86rem;color:#6e5d37}
+      .actions{display:grid;gap:10px}
+      .button{min-height:46px;display:inline-flex;align-items:center;justify-content:center;gap:10px;padding:12px 16px;border-radius:8px;text-decoration:none;font-weight:900;border:1px solid var(--ink)}
+      .button.primary{background:var(--teal);color:white;border-color:var(--teal)}
+      .button.secondary{background:transparent}
+      .icon{width:18px;height:18px;flex:none}
+      section{padding:48px 0}
+      .section-head{display:grid;grid-template-columns:minmax(220px,.55fr) minmax(0,1fr);gap:24px;align-items:end;border-bottom:2px solid var(--ink);padding-bottom:14px}
+      .section-head p{margin:0;color:var(--muted);line-height:1.8}
+      .steps{border-bottom:1px solid var(--line)}
+      .step{display:grid;grid-template-columns:76px minmax(0,1fr) minmax(260px,.5fr);gap:22px;padding:24px 0;border-top:1px solid var(--line)}
+      .step-no{font-family:Newsreader,serif;font-size:2.1rem;color:var(--red)}
+      .step p{margin:8px 0 0;color:var(--muted);line-height:1.75}
+      .codebox{position:relative;border:1px solid var(--line);border-radius:8px;background:#19221f;color:#edf4ef;padding:14px 44px 14px 14px;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:.88rem;line-height:1.55;overflow-wrap:anywhere}
+      .copy-btn{position:absolute;right:8px;top:8px;width:28px;height:28px;border:1px solid rgba(255,255,255,.24);border-radius:6px;background:rgba(255,255,255,.08);color:white;display:grid;place-items:center;cursor:pointer}
+      .matrix{display:grid;grid-template-columns:repeat(3,1fr);border:1px solid var(--line);border-right:0;border-bottom:0}
+      .tile{min-height:176px;padding:18px;background:var(--paper);border-right:1px solid var(--line);border-bottom:1px solid var(--line)}
+      .tile b{display:block;margin-bottom:8px}
+      .tile p{margin:0;color:var(--muted);line-height:1.72}
+      .tag{display:inline-block;color:var(--teal);font-size:.85rem;font-weight:900;margin-bottom:14px}
+      footer{border-top:1px solid var(--line);padding:36px 0 60px;color:var(--muted)}
+      @media(max-width:880px){.nav{display:none}.hero,.section-head{grid-template-columns:1fr}.matrix{grid-template-columns:1fr}.step{grid-template-columns:52px minmax(0,1fr)}.step aside{grid-column:2}}
+    </style>
+  </head>
+  <body>
+    <header class="top">
+      <div class="wrap top-inner">
+        <div class="brand"><span class="mark">J</span><span>Jarvis Starter</span></div>
+        <nav class="nav">
+          <a href="#tai-xuong">Tải xuống</a>
+          <a href="#bat-dau">Bắt đầu</a>
+          <a href="#ben-trong">Bên trong</a>
+          <a href="../">Bản phồn thể</a>
+          <a href="https://github.com/edenchiu806/jarvis-life-system-starter">GitHub</a>
+        </nav>
+      </div>
+    </header>
+    <main class="wrap">
+      <div class="hero">
+        <div>
+          <div class="eyebrow">Bản tiếng Việt / Mở bằng Codex</div>
+          <h1>Jarvis Life System Starter</h1>
+          <p class="lead">Đây là trang hướng dẫn riêng cho người dùng Việt Nam. Tất cả bước cài đặt, câu nhắc khởi động, phần giới thiệu năng lực và mô tả gói tải đều được viết bằng tiếng Việt để người mới có thể làm theo từng bước.</p>
+        </div>
+        <aside class="selector" id="tai-xuong">
+          <div class="selector-head">
+            <div class="language-jump">
+              <span>Cần bản phồn thể?</span>
+              <a href="../">Mở trang phồn thể</a>
+            </div>
+            <div class="seg" aria-label="Hệ điều hành">
+              <button type="button" data-set-os="mac" aria-pressed="true">Mac</button>
+              <button type="button" data-set-os="windows" aria-pressed="false">Windows</button>
+            </div>
+          </div>
+
+    <div class="download-panel" data-os="mac">
+      <div class="download-title">Bản tiếng Việt / Mac</div>
+      <p>Bản Mac: giải nén rồi dùng Cmd + O trong Codex App để chọn thư mục.</p>
+      <div class="actions">
+        <a class="button primary" href="../downloads/jarvis-life-system-starter-vi-mac.zip"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 3v12"/><path d="m7 10 5 5 5-5"/><path d="M5 21h14"/></svg>Tải công khai</a>
+        <a class="button secondary" href="https://drive.google.com/file/d/1ZrC8Cng7JR2tlvfVpczW05lRtJMi00fy/view?usp=drivesdk"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 3v12"/><path d="m7 10 5 5 5-5"/><path d="M5 21h14"/></svg>Bản sao Google Drive</a>
+      </div>
+      <p class="drive-note">Tệp đã được tải lên Google Drive; nếu thấy trang yêu cầu quyền truy cập, hãy dùng nút tải công khai.</p>
+    </div>
+
+    <div class="download-panel" data-os="windows">
+      <div class="download-title">Bản tiếng Việt / Windows</div>
+      <p>Bản Windows: hãy giải nén hoàn toàn trước, sau đó chọn thư mục trong Codex App.</p>
+      <div class="actions">
+        <a class="button primary" href="../downloads/jarvis-life-system-starter-vi-windows.zip"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 3v12"/><path d="m7 10 5 5 5-5"/><path d="M5 21h14"/></svg>Tải công khai</a>
+        <a class="button secondary" href="https://drive.google.com/file/d/1Pc9jPzfwEGlthgVC9slyRWgQuhsqM027/view?usp=drivesdk"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 3v12"/><path d="m7 10 5 5 5-5"/><path d="M5 21h14"/></svg>Bản sao Google Drive</a>
+      </div>
+      <p class="drive-note">Tệp đã được tải lên Google Drive; nếu thấy trang yêu cầu quyền truy cập, hãy dùng nút tải công khai.</p>
+    </div>
+
+        </aside>
+      </div>
+      <section id="bat-dau">
+        <div class="section-head">
+          <h2>Bắt đầu bằng một câu nói tự nhiên</h2>
+          <p>Người dùng không cần nhập lệnh khó hiểu. Chỉ cần mở thư mục bằng Codex rồi gửi câu bên dưới, Jarvis sẽ tự dẫn qua phần trải nghiệm và thiết lập.</p>
+        </div>
+        <div class="steps">
+          <article class="step"><div class="step-no">01</div><div><h3>Tải đúng gói</h3><p>Chọn Mac hoặc Windows, tải gói tiếng Việt rồi giải nén hoàn toàn trước khi mở bằng Codex.</p></div><aside></aside></article>
+          <article class="step"><div class="step-no">02</div><div><h3>Mở thư mục trong Codex</h3><p>Trong Codex, chọn thư mục vừa giải nén để Jarvis có thể đọc các hướng dẫn, kỹ năng, vai trò và quy trình làm việc đã chuẩn bị sẵn.</p></div><aside></aside></article>
+          <article class="step"><div class="step-no">03</div><div><h3>Gửi câu đầu tiên</h3><p>Mở cuộc trò chuyện mới trong thư mục đó và gửi câu này:</p></div><aside><div class="codebox"><button class="copy-btn" type="button" aria-label="Sao chép" data-copy="Chào Jarvis, hãy dẫn tôi hoàn tất thiết lập lần đầu và cho tôi trải nghiệm bạn có thể giúp tôi như thế nào."><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect width="14" height="14" x="8" y="8" rx="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></svg></button>Chào Jarvis, hãy dẫn tôi hoàn tất thiết lập lần đầu và cho tôi trải nghiệm bạn có thể giúp tôi như thế nào.</div></aside></article>
+          <article class="step"><div class="step-no">04</div><div><h3>Hoàn tất thiết lập</h3><p>Jarvis sẽ cho bạn thử năng lực của hệ thống AI, hỏi dần về bối cảnh cá nhân, nhu cầu, công cụ đang dùng và ranh giới riêng tư, sau đó đề xuất và tạo bộ kỹ năng phù hợp.</p></div><aside></aside></article>
+        </div>
+      </section>
+      <section id="ben-trong">
+        <div class="section-head">
+          <h2>Bên trong có gì</h2>
+          <p>Gói tiếng Việt có cấu trúc riêng cho người Việt: hướng dẫn nhập môn, tìm kiếm web, thao tác trình duyệt, ghi nhớ công việc, tạo tác nhân AI và tạo quy trình làm việc.</p>
+        </div>
+        <div class="matrix">
+          <div class="tile"><span class="tag">Nhập môn</span><b>Người hướng dẫn nhập môn</b><p>Dẫn người mới trải nghiệm năng lực, hiểu nhu cầu và thiết lập hệ thống đầu tiên.</p></div>
+          <div class="tile"><span class="tag">Tìm kiếm</span><b>Nghiên cứu web</b><p>Tìm dữ liệu mới, tài liệu chính thức, giá cả, quy định và nguồn bên ngoài khi môi trường hỗ trợ.</p></div>
+          <div class="tile"><span class="tag">Trình duyệt</span><b>Thao tác trang web</b><p>Mở trang, kiểm tra giao diện, xác minh liên kết tải xuống và kiểm tra biểu mẫu khi có công cụ trình duyệt.</p></div>
+          <div class="tile"><span class="tag">Tạo dựng</span><b>Tạo tác nhân AI và kỹ năng</b><p>Biến việc lặp lại thành vai trò chuyên trách, kỹ năng tái sử dụng hoặc quy trình làm việc rõ ràng.</p></div>
+          <div class="tile"><span class="tag">Ghi nhớ</span><b>Ghi lại trạng thái công việc</b><p>Lưu tiến độ, quyết định, bước tiếp theo và ghi chú bàn giao để lần sau tiếp tục dễ dàng.</p></div>
+          <div class="tile"><span class="tag">Kiểm chứng</span><b>Quy tắc bằng chứng</b><p>Mỗi lần hoàn tất cần có đường dẫn tệp, kết quả kiểm tra, nguồn tham khảo hoặc ghi chú bàn giao.</p></div>
+        </div>
+      </section>
+      <section>
+        <div class="section-head">
+          <h2>Những vai trò đã chuẩn bị</h2>
+          <p>Jarvis có sẵn các vai trò nền tảng để người mới không phải tự thiết kế từ đầu.</p>
+        </div>
+        <div class="matrix">
+          <div class="tile"><span class="tag">01</span><b>Jarvis</b><p>Trung tâm điều phối, ghi nhớ và định tuyến nhiệm vụ.</p></div>
+          <div class="tile"><span class="tag">02</span><b>Người hướng dẫn nhập môn</b><p>Dẫn người dùng qua trải nghiệm đầu tiên và bản đồ nhu cầu cá nhân.</p></div>
+          <div class="tile"><span class="tag">03</span><b>Huấn luyện viên tạo kỹ năng</b><p>Giúp tạo tác nhân AI, kỹ năng và quy trình làm việc mới.</p></div>
+          <div class="tile"><span class="tag">04</span><b>Nhà nghiên cứu web</b><p>Tìm kiếm, kiểm tra và tổng hợp thông tin bên ngoài.</p></div>
+          <div class="tile"><span class="tag">05</span><b>Người vận hành trình duyệt</b><p>Mở và xác minh trang web khi có công cụ phù hợp.</p></div>
+          <div class="tile"><span class="tag">06</span><b>Người lập kế hoạch</b><p>Biến ý tưởng còn mơ hồ thành kế hoạch có bước tiếp theo.</p></div>
+        </div>
+      </section>
+    </main>
+    <footer><div class="wrap">Cập nhật ngày 2026-07-06. Mã nguồn: <a href="https://github.com/edenchiu806/jarvis-life-system-starter">https://github.com/edenchiu806/jarvis-life-system-starter</a>.</div></footer>
+    <script>
+      let os = "mac";
+      function syncPanels() {
+        document.querySelectorAll("[data-set-os]").forEach(b => b.setAttribute("aria-pressed", String(b.dataset.setOs === os)));
+        document.querySelectorAll(".download-panel").forEach(p => p.classList.toggle("active", p.dataset.os === os));
+      }
+      document.querySelectorAll("[data-set-os]").forEach(b => b.addEventListener("click", () => { os = b.dataset.setOs; syncPanels(); }));
+      document.querySelectorAll("[data-copy]").forEach(b => b.addEventListener("click", async () => { await navigator.clipboard.writeText(b.dataset.copy); b.setAttribute("aria-label", "Đã sao chép"); }));
+      syncPanels();
+    </script>
+  </body>
+</html>
