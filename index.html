@@ -1,0 +1,496 @@
+<!doctype html>
+    <html lang="zh-Hant">
+      <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>Jarvis 人生系統 Starter 安裝指引</title>
+        <meta name="description" content="一步一步下載、解壓縮並在 Codex 啟動 Jarvis 人生系統 starter kit。" />
+        <meta property="og:title" content="Jarvis 人生系統 Starter 安裝指引" />
+        <meta property="og:description" content="適合 AI 新手的 Jarvis 安裝頁，含 Mac / Windows 下載與 Codex 啟動步驟。" />
+        <meta property="og:type" content="website" />
+        <meta name="theme-color" content="#2f6f63" />
+        <style>
+          @import url("https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&family=Newsreader:opsz,wght@6..72,600;700&display=swap");
+
+          :root {
+            color-scheme: light;
+            --bg: #f7f8f3;
+            --paper: #fcfcf7;
+            --ink: #16201d;
+            --muted: #5d6863;
+            --line: #cfd8cf;
+            --teal: #2f6f63;
+            --teal-2: #dceee8;
+            --clay: #b44f3f;
+            --gold: #c7902e;
+            --violet: #6d5cae;
+            --shadow: 0 18px 50px rgba(22, 32, 29, 0.09);
+            --wrap: min(1120px, calc(100vw - 32px));
+            --radius: 8px;
+          }
+
+          * { box-sizing: border-box; }
+          html { scroll-behavior: smooth; }
+          body {
+            margin: 0;
+            font-family: "Noto Sans TC", system-ui, sans-serif;
+            color: var(--ink);
+            background:
+              linear-gradient(90deg, rgba(47, 111, 99, 0.08) 1px, transparent 1px),
+              linear-gradient(180deg, rgba(180, 79, 63, 0.06), transparent 420px),
+              var(--bg);
+            background-size: 72px 72px, auto, auto;
+          }
+          a { color: inherit; }
+          .wrap { width: var(--wrap); margin: 0 auto; }
+          .topbar {
+            position: sticky;
+            top: 0;
+            z-index: 20;
+            border-bottom: 1px solid rgba(207, 216, 207, 0.9);
+            background: rgba(247, 248, 243, 0.88);
+            backdrop-filter: blur(14px);
+          }
+          .topbar-inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            min-height: 62px;
+            gap: 16px;
+          }
+          .brand {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 900;
+          }
+          .mark {
+            width: 28px;
+            height: 28px;
+            border: 2px solid var(--ink);
+            border-radius: 6px;
+            display: grid;
+            place-items: center;
+            background: var(--teal-2);
+          }
+          .nav {
+            display: flex;
+            gap: 14px;
+            color: var(--muted);
+            font-size: 0.92rem;
+          }
+          .nav a { text-decoration: none; }
+          .hero {
+            display: grid;
+            grid-template-columns: minmax(0, 1.05fr) minmax(320px, 0.95fr);
+            gap: clamp(28px, 5vw, 70px);
+            align-items: start;
+            padding: clamp(38px, 7vw, 82px) 0 34px;
+          }
+          .eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--teal);
+            font-weight: 900;
+            letter-spacing: 0;
+          }
+          h1, h2, h3 {
+            letter-spacing: 0;
+            margin: 0;
+          }
+          h1 {
+            font-family: "Newsreader", serif;
+            font-size: clamp(2.75rem, 7vw, 6.4rem);
+            line-height: 0.9;
+            max-width: 9.5ch;
+            margin-top: 16px;
+          }
+          .lead {
+            margin: 22px 0 0;
+            max-width: 58ch;
+            color: var(--muted);
+            font-size: 1.08rem;
+            line-height: 1.9;
+          }
+          .quick-panel {
+            background: var(--paper);
+            border: 1px solid var(--line);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+          }
+          .panel-head {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 16px;
+            padding: 18px;
+            border-bottom: 1px solid var(--line);
+          }
+          .panel-title { font-weight: 900; }
+          .segmented {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4px;
+            padding: 4px;
+            border: 1px solid var(--line);
+            border-radius: 8px;
+            background: #eef2eb;
+          }
+          .segmented button {
+            border: 0;
+            border-radius: 6px;
+            padding: 10px 14px;
+            background: transparent;
+            color: var(--muted);
+            font: inherit;
+            font-weight: 800;
+            cursor: pointer;
+          }
+          .segmented button[aria-pressed="true"] {
+            background: var(--ink);
+            color: var(--paper);
+          }
+          .download-body { padding: 18px; }
+          .download-title {
+            font-size: 1.55rem;
+            font-weight: 900;
+            margin-bottom: 8px;
+          }
+          .download-copy {
+            margin: 0 0 18px;
+            color: var(--muted);
+            line-height: 1.75;
+          }
+          .actions {
+            display: grid;
+            gap: 10px;
+          }
+          .button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            min-height: 46px;
+            border-radius: 8px;
+            border: 1px solid var(--ink);
+            padding: 12px 16px;
+            text-decoration: none;
+            font-weight: 900;
+            cursor: pointer;
+            transition: transform 160ms ease, box-shadow 160ms ease, background 160ms ease;
+          }
+          .button:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 10px 24px rgba(22, 32, 29, 0.12);
+          }
+          .button.primary { background: var(--teal); color: white; border-color: var(--teal); }
+          .button.secondary { background: transparent; }
+          .button.ghost { border-color: var(--line); background: var(--paper); color: var(--muted); }
+          .icon { width: 18px; height: 18px; flex: none; }
+          .facts {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1px;
+            margin-top: 22px;
+            border: 1px solid var(--line);
+            background: var(--line);
+          }
+          .fact {
+            background: var(--paper);
+            padding: 14px;
+          }
+          .fact b { display: block; font-size: 0.9rem; }
+          .fact span { display: block; margin-top: 4px; color: var(--muted); font-size: 0.9rem; line-height: 1.55; }
+          section { padding: 46px 0; }
+          .section-head {
+            display: grid;
+            grid-template-columns: minmax(220px, 0.55fr) minmax(0, 1fr);
+            gap: 24px;
+            align-items: end;
+            border-bottom: 2px solid var(--ink);
+            padding-bottom: 14px;
+            margin-bottom: 0;
+          }
+          h2 {
+            font-family: "Newsreader", serif;
+            font-size: clamp(2rem, 4.5vw, 4.2rem);
+            line-height: 0.95;
+          }
+          .section-head p {
+            margin: 0;
+            color: var(--muted);
+            line-height: 1.8;
+          }
+          .steps { border-bottom: 1px solid var(--line); }
+          .step {
+            display: grid;
+            grid-template-columns: 76px minmax(0, 1fr) minmax(240px, 0.42fr);
+            gap: 22px;
+            padding: 24px 0;
+            border-top: 1px solid var(--line);
+          }
+          .step-no {
+            color: var(--clay);
+            font-family: "Newsreader", serif;
+            font-weight: 700;
+            font-size: 2.2rem;
+            line-height: 1;
+          }
+          .step h3 { font-size: 1.2rem; margin-bottom: 8px; }
+          .step p { margin: 0; color: var(--muted); line-height: 1.75; }
+          .codebox {
+            position: relative;
+            border: 1px solid var(--line);
+            border-radius: 8px;
+            background: #19221f;
+            color: #edf4ef;
+            padding: 14px 44px 14px 14px;
+            font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+            font-size: 0.88rem;
+            line-height: 1.55;
+            overflow-wrap: anywhere;
+          }
+          .copy-btn {
+            position: absolute;
+            top: 8px;
+            right: 8px;
+            width: 28px;
+            height: 28px;
+            border: 1px solid rgba(255,255,255,0.24);
+            border-radius: 6px;
+            background: rgba(255,255,255,0.08);
+            color: white;
+            display: grid;
+            place-items: center;
+            cursor: pointer;
+          }
+          .grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            border: 1px solid var(--line);
+            border-bottom: 0;
+            border-right: 0;
+          }
+          .tile {
+            min-height: 170px;
+            padding: 18px;
+            background: var(--paper);
+            border-right: 1px solid var(--line);
+            border-bottom: 1px solid var(--line);
+          }
+          .tile strong { display: block; margin-bottom: 8px; font-size: 1.02rem; }
+          .tile p { margin: 0; color: var(--muted); line-height: 1.7; }
+          .tag {
+            display: inline-flex;
+            margin-bottom: 16px;
+            color: var(--teal);
+            font-size: 0.85rem;
+            font-weight: 900;
+          }
+          .privacy {
+            display: grid;
+            grid-template-columns: minmax(0, 1fr) minmax(260px, 0.52fr);
+            gap: 22px;
+            padding: 22px;
+            border: 1px solid var(--line);
+            border-radius: var(--radius);
+            background: #eef4ee;
+          }
+          .privacy ul {
+            margin: 0;
+            padding-left: 18px;
+            color: var(--muted);
+            line-height: 1.8;
+          }
+          footer {
+            padding: 36px 0 60px;
+            color: var(--muted);
+            border-top: 1px solid var(--line);
+          }
+          .hide { display: none; }
+          @media (max-width: 860px) {
+            .nav { display: none; }
+            .hero, .section-head, .privacy { grid-template-columns: 1fr; }
+            .facts, .grid { grid-template-columns: 1fr; }
+            .step { grid-template-columns: 52px minmax(0, 1fr); }
+            .step aside { grid-column: 2; }
+          }
+          @media (prefers-reduced-motion: reduce) {
+            *, html { scroll-behavior: auto; transition: none !important; }
+          }
+        </style>
+      </head>
+      <body>
+        <header class="topbar">
+          <div class="wrap topbar-inner">
+            <div class="brand"><span class="mark">J</span><span>Jarvis Starter</span></div>
+            <nav class="nav" aria-label="頁面導覽">
+              <a href="#install">安裝</a>
+              <a href="#inside">內容</a>
+              <a href="#privacy">隱私</a>
+              <a href="https://github.com/edenchiu806/jarvis-life-system-starter">GitHub</a>
+            </nav>
+          </div>
+        </header>
+
+        <main class="wrap">
+          <div class="hero">
+            <div>
+              <div class="eyebrow">公開版 / 不含私人記憶 / Codex 啟動</div>
+              <h1>Jarvis 人生系統 Starter</h1>
+              <p class="lead">這是一份給 AI 新手的安裝指引。先選你的電腦版本，下載乾淨 starter kit，解壓縮後用 Codex 打開，就能開始使用記憶架構、協作模式、Harness 規範，以及製作 Agent / Skill 的能力模組。</p>
+              <div class="facts" aria-label="套件摘要">
+                <div class="fact"><b>2 個版本</b><span>Mac 與 Windows 分開下載。</span></div>
+                <div class="fact"><b>0 私人資料</b><span>只有空白架構、範本與教學。</span></div>
+                <div class="fact"><b>5 個 Skills</b><span>含新手導覽與 Agent/Skill Builder。</span></div>
+              </div>
+            </div>
+
+            <aside class="quick-panel" aria-label="下載面板">
+              <div class="panel-head">
+                <div>
+                  <div class="panel-title">先選系統版本</div>
+                </div>
+                <div class="segmented" role="group" aria-label="選擇作業系統">
+                  <button type="button" data-os="mac" aria-pressed="true">Mac</button>
+                  <button type="button" data-os="windows" aria-pressed="false">Windows</button>
+                </div>
+              </div>
+              <div class="download-body" data-panel="mac">
+                <div class="download-title">Mac 版下載</div>
+                <p class="download-copy">適合 macOS 使用者。解壓縮後用 Codex App 的 `Cmd + O` 選擇資料夾。</p>
+                <div class="actions">
+                  <a class="button primary" href="https://drive.google.com/file/d/1BbHEKQ5MZ1HMEM_vFILquzP2J7zvqAu6/view?usp=drivesdk"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 3v12"/><path d="m7 10 5 5 5-5"/><path d="M5 21h14"/></svg>Google Drive 下載 Mac 版</a>
+                  <a class="button ghost" href="downloads/jarvis-life-system-starter-mac.zip"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M20 20a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-7.9a2 2 0 0 1-1.7-.9L9.6 4A2 2 0 0 0 7.9 3H4a2 2 0 0 0-2 2v13a2 2 0 0 0 2 2Z"/></svg>GitHub 備用下載</a>
+                </div>
+              </div>
+              <div class="download-body hide" data-panel="windows">
+                <div class="download-title">Windows 版下載</div>
+                <p class="download-copy">適合 Windows 使用者。請先完整解壓縮，再用 Codex App 選擇資料夾。</p>
+                <div class="actions">
+                  <a class="button primary" href="https://drive.google.com/file/d/1zWUJYbttcC92o754xe00vM8MEQaAYJxI/view?usp=drivesdk"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 3v12"/><path d="m7 10 5 5 5-5"/><path d="M5 21h14"/></svg>Google Drive 下載 Windows 版</a>
+                  <a class="button ghost" href="downloads/jarvis-life-system-starter-windows.zip"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M20 20a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-7.9a2 2 0 0 1-1.7-.9L9.6 4A2 2 0 0 0 7.9 3H4a2 2 0 0 0-2 2v13a2 2 0 0 0 2 2Z"/></svg>GitHub 備用下載</a>
+                </div>
+              </div>
+            </aside>
+          </div>
+
+          <section id="install">
+            <div class="section-head">
+              <h2>照這 5 步走</h2>
+              <p>這不是工程師專用文件。你只要下載、解壓縮、用 Codex 打開資料夾，然後貼上第一句話。</p>
+            </div>
+            <div class="steps">
+
+<article class="step">
+  <div class="step-no">01</div>
+  <div>
+    <h3>下載對應版本</h3>
+    <p>在上方選 Mac 或 Windows，優先使用 Google Drive 下載。若 Drive 無法使用，可改用 GitHub 備用下載。</p>
+  </div>
+  <aside></aside>
+</article>
+
+
+<article class="step">
+  <div class="step-no">02</div>
+  <div>
+    <h3>解壓縮資料夾</h3>
+    <p>把 zip 解壓縮到 Documents、桌面或你熟悉的位置。Windows 使用者請不要直接在壓縮檔內開啟。</p>
+  </div>
+  <aside></aside>
+</article>
+
+
+<article class="step">
+  <div class="step-no">03</div>
+  <div>
+    <h3>打開 Codex App</h3>
+    <p>安裝並登入 Codex App，選擇 Local 模式，再開啟剛剛解壓縮的 Jarvis 資料夾。</p>
+  </div>
+  <aside><a class="button secondary" href="https://developers.openai.com/codex/app">Codex App 官方說明</a></aside>
+</article>
+
+
+<article class="step">
+  <div class="step-no">04</div>
+  <div>
+    <h3>貼上第一句話</h3>
+    <p>讓 Jarvis 用新手導覽 Skill 帶你建立第一個任務。</p>
+  </div>
+  <aside><div class="codebox"><button class="copy-btn" type="button" aria-label="複製" data-copy="我完全不懂 AI，請用 $new-user-onboarding 帶我完成設定，並幫我建立第一個任務。"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect width="14" height="14" x="8" y="8" rx="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></svg></button>我完全不懂 AI，請用 $new-user-onboarding 帶我完成設定，並幫我建立第一個任務。</div></aside>
+</article>
+
+
+<article class="step">
+  <div class="step-no">05</div>
+  <div>
+    <h3>確認成功</h3>
+    <p>如果 Jarvis 能說明資料夾結構，並建立第一個 session-state 或下一步清單，就代表安裝完成。</p>
+  </div>
+  <aside><div class="codebox"><button class="copy-btn" type="button" aria-label="複製" data-copy="請檢查這個 starter kit 是否安裝成功，並告訴我下一步該做什麼。"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect width="14" height="14" x="8" y="8" rx="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></svg></button>請檢查這個 starter kit 是否安裝成功，並告訴我下一步該做什麼。</div></aside>
+</article>
+
+            </div>
+          </section>
+
+          <section id="inside">
+            <div class="section-head">
+              <h2>包裡有什麼</h2>
+              <p>只留下幾乎所有人都用得到的核心，不放個人知識庫、不放私人專案。</p>
+            </div>
+            <div class="grid">
+              <div class="tile"><span class="tag">Memory</span><strong>空白記憶架構</strong><p>`session-state`、`handoffs`、`context-window`，用來讓任務下次接得回來。</p></div>
+              <div class="tile"><span class="tag">Collab</span><strong>協作模式</strong><p>理解、拆解、執行、驗證、交接，讓新手知道 AI 正在做哪一步。</p></div>
+              <div class="tile"><span class="tag">Harness</span><strong>Proof Contract</strong><p>要求每次完成都能留下可檢查證據，避免看似完成其實沒有落地。</p></div>
+              <div class="tile"><span class="tag">Agent</span><strong>新手導覽員</strong><p>任何人第一次打開，都能用 `$new-user-onboarding` 開始。</p></div>
+              <div class="tile"><span class="tag">Skill</span><strong>Agent / Skill Builder</strong><p>協助把重複任務變成 Agent、Skill 或固定 Workflow。</p></div>
+              <div class="tile"><span class="tag">Templates</span><strong>可改造範本</strong><p>包含 Agent YAML、Skill Markdown、任務狀態與驗收清單。</p></div>
+            </div>
+          </section>
+
+          <section id="privacy">
+            <div class="privacy">
+              <div>
+                <div class="eyebrow">Privacy by default</div>
+                <h2>這份包不含個人資料</h2>
+              </div>
+              <ul>
+                <li>沒有私人 vault、客戶資料、商業策略或對話紀錄。</li>
+                <li>沒有 API key、token、帳號設定或本機同步設定。</li>
+                <li>所有記憶檔都是空白骨架，使用者自己決定要保存什麼。</li>
+                <li>公開頁與 zip 可從 GitHub 檢查內容。</li>
+              </ul>
+            </div>
+          </section>
+        </main>
+
+        <footer>
+          <div class="wrap">
+            <p>Build 2026-07-06. Source: <a href="https://github.com/edenchiu806/jarvis-life-system-starter">https://github.com/edenchiu806/jarvis-life-system-starter</a>. 官方 Codex 參考：<a href="https://developers.openai.com/codex/codex-manual.md">Codex Manual</a>.</p>
+          </div>
+        </footer>
+
+        <script>
+          const buttons = document.querySelectorAll("[data-os]");
+          const panels = document.querySelectorAll("[data-panel]");
+          buttons.forEach((button) => {
+            button.addEventListener("click", () => {
+              const os = button.dataset.os;
+              buttons.forEach((item) => item.setAttribute("aria-pressed", String(item === button)));
+              panels.forEach((panel) => panel.classList.toggle("hide", panel.dataset.panel !== os));
+            });
+          });
+
+          document.querySelectorAll("[data-copy]").forEach((button) => {
+            button.addEventListener("click", async () => {
+              const text = button.getAttribute("data-copy");
+              await navigator.clipboard.writeText(text);
+              button.setAttribute("aria-label", "已複製");
+              setTimeout(() => button.setAttribute("aria-label", "複製"), 1200);
+            });
+          });
+        </script>
+      </body>
+    </html>
